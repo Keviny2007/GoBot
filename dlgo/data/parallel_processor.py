@@ -35,21 +35,25 @@ class GoDataProcessor:
 # tag::load_generator[]
     def load_go_data(self, data_type='train', num_samples=1000,
                      use_generator=False):
+        # FOR SAMPLING LOCALLY
         # index = KGSIndex(data_directory=self.data_dir)
         # index.download_files()
 
         # sampler = Sampler(data_dir=self.data_dir)
         # data = sampler.draw_data(data_type, num_samples)
+        
 
-        sampler = Sampler(data_dir=self.data_dir)
+        # FOR GENERATING TEST .NPY FILES LOCALLY
+        # sampler = Sampler(data_dir=self.data_dir)
 
-        if data_type == 'test':
-            # Don't resample, just use the fixed ones from test_samples.py
-            data = sampler.draw_data('test', None)
-        else:
-            data = sampler.draw_data('train', num_samples)
+        # if data_type == 'test':
+        #     # Don't resample, just use the fixed ones from test_samples.py
+        #     data = sampler.draw_data('test', None)
+        # else:
+        #     data = sampler.draw_data('train', num_samples)
 
-        self.map_to_workers(data_type, data)  # <1>
+        # self.map_to_workers(data_type, data)  # <1>
+
         if use_generator:
             generator = DataGenerator(self.data_dir, data_type)
             return generator  # <2>
