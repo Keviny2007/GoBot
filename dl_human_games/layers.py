@@ -43,7 +43,8 @@ def layers(input_shape):
             self.classifier = nn.Sequential(
                 nn.Flatten(),
                 nn.Linear(self.flattened_size, 1024),
-                nn.ReLU()
+                nn.ReLU(),
+                nn.Linear(1024, 361)
             )
 
         def forward(self, x):
