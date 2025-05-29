@@ -1,4 +1,4 @@
-from dlgo.agent import bad
+from dlgo.agent import dlagents
 from dlgo import goboard
 from dlgo import gotypes
 from dlgo.utils import print_board, print_move, point_from_coords
@@ -8,10 +8,10 @@ from dlgo.encoders.base import get_encoder_by_name
 # from six.moves import input
 
 def main():
-    board_size = 9
+    board_size = 19
     game = goboard.GameState.new_game(board_size)
-    encoder = get_encoder_by_name('oneplane', 9)
-    bot = bad.BadAgent(encoder)
+    encoder = get_encoder_by_name('simple', 19)
+    bot = dlagents.DLAgent(encoder, 'dl_human_games/small_model_epoch_5.pth')
     gui = GameGUI(game, bot=bot, bot_players=[gotypes.Player.white])
     gui.run()
     # while not game.is_over():

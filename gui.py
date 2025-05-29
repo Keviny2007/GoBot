@@ -8,7 +8,7 @@ from dlgo.gotypes import Point, Player
 from dlgo.utils import print_move
 import time
 
-GRID_NUM = 9
+GRID_NUM = 19
 WINDOW_SIZE = (1080, 720)
 BOARD_LEN = min(WINDOW_SIZE) * 0.8
 OFFSET = ((WINDOW_SIZE[0]-BOARD_LEN)/2, (WINDOW_SIZE[1]-BOARD_LEN)/2)
@@ -168,11 +168,12 @@ class GameGUI:
             events = pg.event.get()
             
             if self.game.next_player in self.bot_players and not self.game.is_over():
-                move = self.bot.select_move(self.game)
+                # move = self.bot.select_move(self.game)
+                move = self.bot[self.game.next_player].select_move(self.game)
                 print_move(self.game.next_player, move)
                 self.game = self.game.apply_move(move)
                 self.display_board(self.game)
-                pg.time.wait(1)  # short pause to show bot move
+                pg.time.wait(10)  # short pause to show bot move
                 continue
 
             for event in events:

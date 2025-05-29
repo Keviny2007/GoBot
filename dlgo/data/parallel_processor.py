@@ -36,29 +36,19 @@ class GoDataProcessor:
     def load_go_data(self, data_type='train', num_samples=1000,
                      use_generator=False):
         # FOR SAMPLING LOCALLY
-        # index = KGSIndex(data_directory=self.data_dir)
-        # index.download_files()
+        index = KGSIndex(data_directory=self.data_dir)
+        index.download_files()
 
-        # sampler = Sampler(data_dir=self.data_dir)
-        # data = sampler.draw_data(data_type, num_samples)
+        sampler = Sampler(data_dir=self.data_dir)
+        data = sampler.draw_data(data_type, num_samples)
         
-
-        # FOR GENERATING TEST .NPY FILES LOCALLY
-        # sampler = Sampler(data_dir=self.data_dir)
-
-        # if data_type == 'test':
-        #     # Don't resample, just use the fixed ones from test_samples.py
-        #     data = sampler.draw_data('test', None)
-        # else:
-        #     data = sampler.draw_data('train', num_samples)
-
-        # self.map_to_workers(data_type, data)  # <1>
+        self.map_to_workers(data_type, data)  # <1>
 
         if use_generator:
-            generator = DataGenerator(self.data_dir, data_type)
+            generator = DataGenerator(self.data_dir, data)
             return generator  # <2>
         else:
-            features_and_labels = self.consolidate_games(data_type, data_type)
+            features_and_labels = self.consolidate_games(data_type, data)
             return features_and_labels  # <3>
 
 # <1> Map workload to CPUs

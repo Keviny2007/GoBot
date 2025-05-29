@@ -4,13 +4,13 @@ from keras.utils import to_categorical
 
 
 class DataGenerator:
-    def __init__(self, data_directory, data_type='train'):
+    def __init__(self, data_directory, samples):
         self.data_directory = data_directory
-        # self.samples = samples
-        # self.files = set(file_name for file_name, index in samples)
-        self.data_type = data_type
-        self.feature_files = sorted(glob.glob(f"{self.data_directory}/*{data_type}_features_*.npy"))
-        self.label_files = [f.replace('features', 'labels') for f in self.feature_files]
+        self.samples = samples
+        self.files = set(file_name for file_name, index in samples)
+        # self.data_type = data_type
+        # self.feature_files = sorted(glob.glob(f"{self.data_directory}/*{data_type}_features_*.npy"))
+        # self.label_files = [f.replace('features', 'labels') for f in self.feature_files]
 
         self.num_samples = None
 
