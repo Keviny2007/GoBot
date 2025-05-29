@@ -41,7 +41,15 @@ class GoDataProcessor:
         # sampler = Sampler(data_dir=self.data_dir)
         # data = sampler.draw_data(data_type, num_samples)
 
-        # self.map_to_workers(data_type, data)  # <1>
+        sampler = Sampler(data_dir=self.data_dir)
+
+        if data_type == 'test':
+            # Don't resample, just use the fixed ones from test_samples.py
+            data = sampler.draw_data('test', None)
+        else:
+            data = sampler.draw_data('train', num_samples)
+
+        self.map_to_workers(data_type, data)  # <1>
         if use_generator:
             generator = DataGenerator(self.data_dir, data_type)
             return generator  # <2>
