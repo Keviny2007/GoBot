@@ -7,7 +7,7 @@ from dl_human_games.better_cnn_model import BetterGoCNN
 import os
 
 class DLAgent(Agent):
-    def __init__(self, encoder, model_path='sl_simulated_games/go_cnn.pt'):
+    def __init__(self, encoder, model_path):
         super().__init__()
         self.encoder = encoder
         self.model = BetterGoCNN()

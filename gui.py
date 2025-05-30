@@ -168,8 +168,8 @@ class GameGUI:
             events = pg.event.get()
             
             if self.game.next_player in self.bot_players and not self.game.is_over():
-                # move = self.bot.select_move(self.game)
-                move = self.bot[self.game.next_player].select_move(self.game)
+                move = self.bot.select_move(self.game)
+                # move = self.bot[self.game.next_player].select_move(self.game)
                 print_move(self.game.next_player, move)
                 self.game = self.game.apply_move(move)
                 self.display_board(self.game)

@@ -1,6 +1,6 @@
 import torch.nn as nn
 import torch.nn.functional as F
-from dl_human_games.layers import layers
+from dl_human_games.layers_small import layers
 
 class BetterGoCNN(nn.Module):
     def __init__(self, board_size=19):
