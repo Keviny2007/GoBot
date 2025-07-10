@@ -32,7 +32,7 @@ Installation
 Playing Against a Bot
 
 Use the `human_v_bot.py` script to play against a trained AI:
-    ```bash
+
     python human_v_bot.py
 
 Command line options:
@@ -42,13 +42,13 @@ Command line options:
 * --list-models: List all available trained models
 
 Example:
-    ```bash
+
     python human_v_bot.py --board-size 19 --bot-color black
 
 Watching Bots Play Against Each Other (not as exciting)
 
 Use the `bot_v_bot.py` script to watch two bots play:
-    ```bash
+
     python bot_v_bot.py
 
 Command line options:
@@ -59,7 +59,7 @@ Command line options:
 * --list-models: List available models and exit
 
 Example:
-    ```bash
+
     python bot_v_bot.py --black dl --white dl --black-model model1.pth --white-model model2.pth
 
 ## AI Models
